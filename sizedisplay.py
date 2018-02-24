@@ -1,6 +1,6 @@
 import os
 
-dropout = 0.1
+dropout = 0.1 #dirs smaller than this will not be displayed
 
 def getDirs(path = '.'):
     dirs = []
