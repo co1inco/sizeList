@@ -61,6 +61,7 @@ def getTotalSize(a):
 
 # ---------
 
+print("Working dir: ", os.getcwd())
 print(" Start")
 
 dirs = getDirs()
