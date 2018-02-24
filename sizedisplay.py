@@ -16,7 +16,10 @@ def getSize(start_path = '.'):
     for dirpath, dirnames, filenames in os.walk(start_path):
         for f in filenames:
             fp = os.path.join(dirpath, f)
-            total_size += os.path.getsize(fp)
+            try:
+                total_size += os.path.getsize(fp)
+            except FileNotFoundError:
+                print("ERROR: " + fp + ">FileNotFound<")
     return total_size
 
 
@@ -68,14 +71,10 @@ dirs = getDirs()
 a = {}
 
 for j, i in enumerate(dirs):
-    try:
-        size = convSize(getSize(i))      
-#        print(str(size[3]) + " " + i)
-        a[i] = size[3] #size first easyer to sort but dubble index possible!!
-    except FileNotFoundError:
-        print("ERROR " + i)
+    size = convSize(getSize(i))      
+    a[i] = size[3] #size first easyer to sort but dubble index possible!!
 
-print(" ------- \n")
+print("------- \n")
 
 #for i in sorted(a.keys(), reverse = True): #size first
 #    print(a[i] + ' ' + i)
